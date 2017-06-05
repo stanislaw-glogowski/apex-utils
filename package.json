@@ -1,0 +1,46 @@
+{
+  "name": "apex-utils",
+  "version": "0.0.1",
+  "description": "Collection of helpers useful in a work with AWS Lambda",
+  "author": {
+    "name": "Stanislaw Glogowski",
+    "email": "hello@newobject.pl"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stanislaw-glogowski/apex-utils.git"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "prebuild": "rimraf ./dist/*",
+    "build": "tsc",
+    "lint": "tslint --exclude node_modules **/*.ts",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "devDependencies": {
+    "@types/jest": "^19.2.4",
+    "@types/node": "^7.0.23",
+    "jest": "^20.0.4",
+    "rimraf": "^2.6.1",
+    "ts-jest": "^20.0.5",
+    "tslint": "^5.4.2",
+    "typescript": "^2.3.4"
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(\\.spec)\\.ts$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  }
+}
