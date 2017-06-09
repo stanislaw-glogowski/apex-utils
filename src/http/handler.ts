@@ -47,12 +47,6 @@ export function buildHandlerCreator(options: IHandlerCreatorOptions = {}): Handl
       res.error(ErrorStatuses.InternalServerError, err);
     }
 
-    const outgoingEvent = res.format();
-
-    if (res.hasErrorStatusCode) {
-      throw outgoingEvent;
-    }
-
-    return outgoingEvent;
+    return res.format();
   };
 }

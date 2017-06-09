@@ -24,16 +24,13 @@ describe("creator without middleware", () => {
     const handler = createHandler(() => {
       throw err;
     });
+    const event = await handler({event: {}, context: {}});
 
-    try {
-      await handler({event: {}, context: {}});
-    } catch (event) {
-      expect(event).toEqual({
-        statusCode: 500,
-        headers: {},
-        body: err,
-      });
-    }
+    expect(event).toEqual({
+      statusCode: 500,
+      headers: {},
+      body: err,
+    });
   });
 
   test("calling handler which resolves body", async () => {
@@ -50,16 +47,13 @@ describe("creator without middleware", () => {
   test("calling handler which rejects error", async () => {
     expect.assertions(1);
     const handler = createHandler(() => Promise.reject("error"));
+    const event = await handler({event: {}, context: {}});
 
-    try {
-      await handler({event: {}, context: {}});
-    } catch (event) {
-      expect(event).toEqual({
-        statusCode: 500,
-        headers: {},
-        body: "error",
-      });
-    }
+    expect(event).toEqual({
+      statusCode: 500,
+      headers: {},
+      body: "error",
+    });
   });
 
   test("setting response status", async () => {
@@ -108,11 +102,7 @@ describe("creator with middleware", () => {
       });
       const mock = jest.fn();
       const handler = createHandler(mock);
-      try {
-        await handler({event: {}, context: {}});
-      } catch (event) {
-        //
-      }
+      await handler({event: {}, context: {}});
 
       expect(mock).not.toBeCalled();
     });
