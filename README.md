@@ -47,6 +47,8 @@ export const asyncHandler = createLambda(async ({event, context}) => {
 
 ```
 
+[More Examples](https://github.com/stanislaw-glogowski/apex-typescript-example)
+
 ## License
 
 The MIT License
