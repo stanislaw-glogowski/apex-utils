@@ -15,6 +15,10 @@ export class Request implements IRequest {
     return this.event.httpMethod;
   }
 
+  public get body(): string {
+    return this.event.body;
+  }
+
   public param(key: string, defaultValue?: any): any {
     return getParamValue(this.event.pathParameters, key, defaultValue);
   }

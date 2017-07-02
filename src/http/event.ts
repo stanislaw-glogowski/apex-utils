@@ -4,6 +4,7 @@ export interface IIncomingEvent {
   httpMethod: string;
   pathParameters: IParams;
   queryStringParameters: IParams;
+  body?: string;
 }
 
 export interface IOutgoingEvent {
