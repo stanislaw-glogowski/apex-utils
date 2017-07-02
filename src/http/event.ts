@@ -2,6 +2,7 @@ export type IParams = { [key: string]: any } | null;
 
 export interface IIncomingEvent {
   httpMethod: string;
+  headers: IParams;
   pathParameters: IParams;
   queryStringParameters: IParams;
   body?: string;
