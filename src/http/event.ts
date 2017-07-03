@@ -5,6 +5,11 @@ export interface IIncomingEvent {
   headers: IParams;
   pathParameters: IParams;
   queryStringParameters: IParams;
+  requestContext?: {
+    authorizer?: {
+      principalId?: any;
+    },
+  };
   body?: string;
 }
 
