@@ -3,7 +3,7 @@ import { IIncomingEvent, getParamValue } from "./event";
 export interface IRequest {
   method: string;
   body: string | null;
-  authorizerPrincipalId: string | null;
+  context(key: string): any;
   header(key: string, defaultValue?: string): string;
   param(key: string, defaultValue?: any): any;
   query(key: string, defaultValue?: any): any;
@@ -18,22 +18,16 @@ export class Request implements IRequest {
     return this.event.httpMethod;
   }
 
-  public get authorizerPrincipalId(): string | null {
-    let result;
-    try {
-      result = this.event.requestContext.authorizer.principalId || null;
-    } catch (err) {
-      result = null;
-    }
-    return result;
-  }
-
   public get body(): string {
     return this.event.body || null;
   }
 
   public header(key: string, defaultValue?: string): string {
     return getParamValue(this.event.headers, key, defaultValue || "");
+  }
+
+  public context(key: string): any {
+    return getParamValue(this.event.requestContext, key);
   }
 
   public param(key: string, defaultValue?: any): any {

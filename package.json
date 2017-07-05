@@ -1,6 +1,6 @@
 {
   "name": "apex-utils",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Collection of helpers useful in a work with AWS Lambda",
   "author": {
     "name": "Stanislaw Glogowski",
